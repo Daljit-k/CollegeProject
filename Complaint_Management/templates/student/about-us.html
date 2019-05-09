@@ -1,0 +1,310 @@
+<!doctype html>
+{%load staticfiles%}
+<html lang="en">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="icon" href="img/favicon.png" type="image/png">
+        <title>Education</title>
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="{% static 'student/css/bootstrap.css' %}">
+        <link rel="stylesheet" href="{% static 'student/vendors/linericon/style.css' %}">
+        <link rel="stylesheet" href="{% static 'student/css/font-awesome.min.css' %}">
+        <link rel="stylesheet" href="{% static 'student/vendors/owl-carousel/owl.carousel.min.css' %}">
+        <link rel="stylesheet" href="{% static 'student/vendors/lightbox/simpleLightbox.css' %}">
+        <link rel="stylesheet" href="{% static 'student/vendors/nice-select/css/nice-select.css' %}">
+        <link rel="stylesheet" href="{% static 'student/vendors/animate-css/animate.css' %}">
+        <link rel="stylesheet" href="{% static 'student/vendors/popup/magnific-popup.css' %}">
+        <!-- main css -->
+        <link rel="stylesheet" href="{% static 'student/css/style.css' %}">
+        <link rel="stylesheet" href="{% static 'student/css/responsive.css' %}">
+    </head>
+    <body>
+        
+        <!--================Header Menu Area =================-->
+       
+       
+       
+               <!--================Header Menu Area =================-->
+        <header class="header_area">
+           	
+            <div class="main_menu" style="background-color:#10243E;">
+            	<nav class="navbar navbar-expand-lg navbar-light">
+					<div class="container">
+						<!-- Brand and toggle get grouped for better mobile display -->
+						<a class="navbar-brand logo_h" href="index.html" style="margin-left:-200px"><img src="{% static 'student/gndu/logogndu.png' %}" alt="" height="100"></a>
+						<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<!-- Collect the nav links, forms, and other content for toggling -->
+						<div class="collapse navbar-collapse offset" id="navbarSupportedContent">
+							<ul class="nav navbar-nav menu_nav ml-auto">
+								<li class="nav-item active" style="color:white"><a class="nav-link" href="{% url 'index1' %}">Home</a></li> 
+								<li class="nav-item" style="color:white"><a class="nav-link" href="{% url 'about1' %}">About</a></li> 
+							
+								
+								<li class="nav-item" style="color:white"><a class="nav-link" href="{% url 'contact1' %}">Contact</a></li>
+
+								{% if 'username1' in request.session %}
+								<li class="nav-item" ><a class="nav-link" href="{% url 'logout1' %}">logout</a></li>
+								<li class="nav-item"><a class="nav-link" href="{% url 'profile1' %}">Profile</a></li>
+								<li class="nav-item"><a class="nav-link" href="{% url 'status1' %}">Query status</a></li>
+								{% else %}
+								<li class="nav-item">
+									<a class="nav-link" href="{% url 'sign1' %}">Signup</a>/
+									<a class="nav-link" href="{% url 'log1' %}">login</a>
+								</li>
+
+								{% endif %}
+							</ul>
+						</div> 
+					</div>
+            	</nav>
+            </div>
+        </header>
+        <!--================Header Menu Area =================-->
+       
+       
+       
+       
+        <!--================Header Menu Area =================-->
+        
+        <!--================Home Banner Area =================-->
+        <section class="banner_area" >
+            <div class="banner_inner d-flex align-items-center">
+            	<div class="overlay bg-parallax" data-stellar-ratio="0.9" data-stellar-vertical-offset="0" data-background=""
+                style="background-image:url('{% static 'student/gndu/1.jpg' %}');"></div>
+				<div class="container">
+					<div class="banner_content text-center">
+						<h2>About Us</h2>
+						<div class="page_link">
+							<a href="{% url 'index1' %}">Home</a>
+							<a href="{% url 'about1' %}">About Us</a>
+						</div>
+					</div>
+				</div>
+            </div>
+        </section>
+        <!--================End Home Banner Area =================-->
+        
+        <!--================About Area =================-->
+        <section class="about_area p_120">
+        	<div class="container">
+        		<div class="main_title">
+        			<h2>Goals to Achieve for the leadership</h2>
+        			<p>Accredited at “A++” grade (highest level as per modified criteria notified on 27.07.2017) by NAAC and Conferred “University with Potential for Excellence” status by UGC</p>
+        		</div>
+        		<div class="row about_inner">
+        			<div class="col-lg-6">
+						<div class="accordion" id="accordionExample">
+							<div class="card">
+								<div class="card-header" id="headingOne">
+									<button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+								About University
+									<i class="lnr lnr-chevron-down"></i>
+									<i class="lnr lnr-chevron-up"></i>
+									</button>
+								</div>
+
+								<div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+									<div class="card-body">
+								Guru Nanak Dev University was established at Amritsar on November 24, 1969 to mark the 500th birth anniversary of Sri Guru Nanak Dev Ji. It is both a residential and an affiliating university. In conceiving the future course of the University, the objectives enshrined in the Guru Nanak Dev University Act 1969, emphasised that the new University would make provision for imparting education and promoting research in the humanities, learned professions, sciences, especially of applied nature and technology 
+									</div>
+								</div>
+							</div>
+							<div class="card">
+								<div class="card-header" id="headingTwo">
+									<button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+									Vice Chancellor’s Message
+									<i class="lnr lnr-chevron-down"></i>
+									<i class="lnr lnr-chevron-up"></i>
+									</button>
+								</div>
+								<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+									<div class="card-body">
+								In the on-going journey since 24th November, 1969, Guru Nanak Dev University has become an institution of iconic marvel in academics, sports, sciences having been conferred the status of “University with Potential for Excellence” by UGC and accredited at "A++" grade (highest level as per modified criteria) by NAAC. More than twenty departments of the University have received varied grants under UGC:SAP, DST-FIST and PURSE. The commitment to follow the path of success and our forte to strive for better shall definitely lead us towards grander zeniths. 
+									</div>
+								</div>
+							</div>
+							<div class="card">
+								<div class="card-header" id="headingThree">
+									<button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+								Dean Colleges Message
+									<i class="lnr lnr-chevron-down"></i>
+									<i class="lnr lnr-chevron-up"></i>
+									</button>
+								</div>
+								<div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+									<div class="card-body">
+								I am pleased to write that Guru Nanak Dev University has a glorious history of over 42 years. In this short-span of time, the University has scaled new heights in academics, sports and cultural activities. Carefully nurtured by illustrious administrators, the University has carved a perfect niche for itself on the academic map of India and is a true Mecca for students from rural, urban and border areas.
+									</div>
+								</div>
+							</div>
+							<div class="card">
+								<div class="card-header" id="headingfour">
+									<button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapsefour" aria-expanded="false" aria-controls="collapsefour">
+								About Amritsar
+									<i class="lnr lnr-chevron-down"></i>
+									<i class="lnr lnr-chevron-up"></i>
+									</button>
+								</div>
+								<div id="collapsefour" class="collapse" aria-labelledby="headingfour" data-parent="#accordionExample">
+									<div class="card-body">
+								Amritsar, known for rich cultural heritage of four centuries, a living symbol of historical and religious traditions of Sikhs tangibly expressed through the divinely - blessed shrines, has rightfully earned for it the sobriquet "religious capital of the Sikhs". Historically speaking, the fourth Guru, Guru Ram Das, secured the gift of a piece of land from Emperor Akbar, where he built the holy tank and laid the foundation of Amritsar, which became a sacred place for the pilgrimage of the community. 
+									</div>
+								</div>
+							</div>
+						</div>
+        			</div>
+        			<div class="col-lg-6">
+        				<div class="video_area" id="video">
+							<img class="img-fluid" src="{% static 'student/gndu/admission.jpg' %}" alt="">
+							<a class="popup-youtube" href="https://www.youtube.com/watch?v=jMxhy-Ppadk">
+								<img src="{% static 'student/img/icon/video-icon-1.png' %}" alt="">
+							</a>
+						</div>
+        			</div>
+        		</div>
+        		<div class="about_details">
+        			<p>The University has risen to 16th rank in the top 50 universities of the country, as per recent survey conducted by 'India Today' and has achieved 11th Position, out of the 500 universities, in Publications in science. The University has won the highest sports Award in the country, the Maulana Abul Kalam Azad Trophy, for a record of 21 times. The university has won National Championship in Inter-University Youth Festivals in the year 2012. The University has been National Champion for 8 times. The University has also won the North Zone Inter-University Cultural Championship for the 12 times this year. 
+.</p>
+        			<p>The University has succeeded in creating a niche for itself in the country over comparatively shorter period of time. It was in acknowledgment of our strengths that we have had the honour to host the 28th North Zone Inter-University Zonal Youth Festival 'Guldasta' under the aegis of Association of Indian Universities (AIU), New Delhi and Ministry of Youth Affairs and Sports, Govt. of India. University also hosted 4-day International Conference sponsored by Indian Academy of Neurosciences: Unraveling Mysteries of Brain in Health and Disease. 
+.</p>
+
+<p>
+    The University has endeavored to reach out to the rural poor, with the launch of an organization named the Progressive Education Society to help and train children from poor families of the rural Punjab, and to equip them to crack IIT-JEE and other national tests. The students undergo their studies for plus one and plus two classes at the Khalsa College Public School. They are getting this training without paying a single penny. The society financed by the Govt. and other sources takes care of all the needs of these students. 
+
+    
+</p>
+
+<p>
+    
+    We are continuously adding to the infrastructure to promote various sports activities on the campus. A new synthetic turf was laid for hockey and a new Velodrome conforming to international standards is recently inaugurated by Sardar Sikandar Singh Maluka, Minister of Higher Education and Languages of Punjab. We are aware of our rich cultural heritage which is getting in to oblivion at a fast pace. A heritage village is being constructed for a show case of our rich cultural heritage in on an 11 acre piece of land. 
+
+    
+</p>
+
+        		</div>
+        	</div>
+        </section>
+        <!--================End About Area =================-->
+       
+       
+        <!--================Impress Area =================-->
+        <section class="impress_area p_120" style="background-image:url('{% static 'student/gndu/slider-9.jpg' %}');">
+        	<div class="container">
+        		<div class="impress_inner text-center">
+					<h2>Resolving Your Complaint</h2>
+					<p>Complaints concerning actions that occurred more than two years prior to filing a student complaint form with the THECB, unless the cause of the delay in filing the student complaint form with the Agency was the complainant's exhaustion of the institution's grievance procedures</p>
+
+        		</div>
+        	</div>
+        </section>
+        <!--================End Impress Area =================-->
+        
+        <!--================ start footer Area  =================-->	
+       <footer class="footer-area p_120">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-2  col-md-6 col-sm-6">
+                        <div class="single-footer-widget tp_widgets">
+                           <h6 class="footer_title">Quick Links</h6>
+                            <ul class="list">
+                            	<li><a href="http://online.gndu.ac.in/download-center.aspx">Download Center</a></li>
+                            	<li><a href="http://www.gndu.ac.in/TEQIP%20website/Home.html">TEQIP</a></li>
+                            	<li><a href="https://alumni.gndu.ac.in/">Alumni</a></li>
+                            	<li><a href="http://online.gndu.ac.in/placements.aspx">Placements</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-2  col-md-6 col-sm-6">
+                        <div class="single-footer-widget tp_widgets">
+                           <h6 class="footer_title">Regional Campuses</h6>
+                            <ul class="list">
+                            	<li><a href="http://www.gndurcjal.in/">Jalandhar Campus</a></li>
+                            	<li><a href="https://www.gndurcgsp.in/">Gurdaspur Campus</a></li>
+                            	<li><a href="#">Fattu Dhinga Campus</a></li>
+                            	<li><a href="http://gndurcsathiala.org/">Sathiala Campus</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-2  col-md-6 col-sm-6">
+                        <div class="single-footer-widget tp_widgets">
+                           <h6 class="footer_title">Features</h6>
+                            <ul class="list">
+                            	<li><a href="#">GIAN</a></li>
+                            	<li><a href="#">IQAC</a></li>
+                            	<li><a href="#">-</a></li>
+                            	
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-2  col-md-6 col-sm-6">
+                        <div class="single-footer-widget tp_widgets">
+                           <h6 class="footer_title">University Colleges</h6>
+                            <ul class="list">
+                            	<li><a href="http://www.assmcollege.org/">A.S.S.M College</a></li>
+                            	<li><a href="http://www.gnducjal.org/">GNDU Jalandhar College</a></li>
+                            	<li><a href="http://online.gndu.ac.in/srspm-college-niari.aspx">S.R.S.P.M College, Niari</a></li>
+                            	<li><a href="#">Agencies</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-sm-6">
+                        <aside class="f_widget news_widget">
+        					<div class="f_title">
+        						<h3 class="footer_title">Newsletter</h3>
+        					</div>
+        					<p>Stay updated with our latest trends</p>
+        					<div id="mc_embed_signup">
+                                <form target="_blank" action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01" method="get" class="subscribe_form relative">
+                                	<div class="input-group d-flex flex-row">
+                                        <input name="EMAIL" placeholder="Enter email address" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Email Address '" required="" type="email">
+                                        <button class="btn sub-btn"><span class="lnr lnr-arrow-right"></span></button>		
+                                    </div>				
+                                    <div class="mt-10 info"></div>
+                                </form>
+                            </div>
+        				</aside>
+                    </div>
+                </div>
+                <div class="row footer-bottom d-flex justify-content-between align-items-center">
+                    
+                    <div class="col-lg-4 col-md-4 footer-social">
+                        <a href="#"><i class="fa fa-facebook"></i></a>
+                        <a href="#"><i class="fa fa-twitter"></i></a>
+                        <a href="#"><i class="fa fa-dribbble"></i></a>
+                        <a href="#"><i class="fa fa-behance"></i></a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+		<!--================ End footer Area  =================-->
+        
+        
+        
+        
+        
+        
+       <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="{% static 'student/js/jquery-3.3.1.min.js' %}"></script>
+        <script src="{% static 'student/js/popper.js' %}"></script>
+        <script src="{% static 'student/js/bootstrap.min.js' %}"></script>
+        <script src="{% static 'student/js/stellar.js' %}"></script>
+        <script src="{% static 'student/vendors/lightbox/simpleLightbox.min.js' %}"></script>
+        <script src="{% static 'student/vendors/nice-select/js/jquery.nice-select.min.js' %}"></script>
+        <script src="{% static 'student/vendors/isotope/imagesloaded.pkgd.min.js' %}"></script>
+        <script src="{% static 'student/vendors/isotope/isotope.pkgd.min.js' %}"></script>
+        <script src="{% static 'student/vendors/owl-carousel/owl.carousel.min.js' %}"></script>
+        <script src="{% static 'student/vendors/popup/jquery.magnific-popup.min.js' %}"></script>
+        <script src="{% static 'student/js/jquery.ajaxchimp.min.js' %}"></script>
+        <script src="{% static 'student/vendors/counter-up/jquery.waypoints.min.js' %}"></script>
+        <script src="{% static 'student/vendors/counter-up/jquery.counterup.js' %}"></script>
+        <script src="{% static 'student/js/mail-script.js' %}"></script>
+        <script src="{% static 'student/js/theme.js' %}"></script>
+    </body>
+</html>

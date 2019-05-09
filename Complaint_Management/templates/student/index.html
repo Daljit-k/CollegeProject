@@ -1,0 +1,725 @@
+<!doctype html>
+{%load staticfiles%}
+<html lang="en">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="icon" href="img/favicon.png" type="image/png">
+        <title>Education</title>
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="{% static 'student/css/bootstrap.css' %}">
+        <link rel="stylesheet" href="{% static 'student/vendors/linericon/style.css' %}">
+        <link rel="stylesheet" href="{% static 'student/css/font-awesome.min.css' %}">
+        <link rel="stylesheet" href="{% static 'student/vendors/owl-carousel/owl.carousel.min.css' %}">
+        <link rel="stylesheet" href="{% static 'student/vendors/lightbox/simpleLightbox.css' %}">
+        <link rel="stylesheet" href="{% static 'student/vendors/nice-select/css/nice-select.css' %}">
+        <link rel="stylesheet" href="{% static 'student/vendors/animate-css/animate.css' %}">
+        <link rel="stylesheet" href="{% static 'student/vendors/popup/magnific-popup.css' %}">
+        <!-- main css -->
+        <link rel="stylesheet" href="{% static 'student/css/style.css' %}">
+        <link rel="stylesheet" href="{% static 'student/css/responsive.css' %}">
+		<script src="{% static 'student/jq/jquery-1.10.2.js' %}"></script>
+
+ <script>
+
+$(function(){
+  $('.r1').click(function(){
+    if ($(this).is(':checked'))
+    {
+      radval=$(this).val();
+
+      if(radval=="hostel")
+      {
+      $(".subhostel").show();
+      $(".subdepart").hide();
+      $(".subarea").hide();
+      }
+      if(radval=="department")
+      {
+      $(".subhostel").hide();
+      $(".subdepart").show();
+      $(".subarea").hide();
+      }
+      if(radval=="residental area")
+      {
+      $(".subhostel").hide();
+      $(".subdepart").hide();
+      $(".subarea").show();
+      }
+    }
+  });
+});
+</script>
+
+    </head>
+    <body>
+        
+        <!--================Header Menu Area =================-->
+        <header class="header_area">
+          
+            <div class="main_menu" style="background-color:#10243E;">
+            	<nav class="navbar navbar-expand-lg navbar-light">
+					<div class="container">
+						<!-- Brand and toggle get grouped for better mobile display -->
+						<a class="navbar-brand logo_h" href="index.html" style="margin-left:-200px"><img src="{% static 'student/gndu/logogndu.png' %}" alt="" height="100"></a>
+						<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<!-- Collect the nav links, forms, and other content for toggling -->
+						<div class="collapse navbar-collapse offset" id="navbarSupportedContent">
+							<ul class="nav navbar-nav menu_nav ml-auto">
+								<li class="nav-item active"><a class="nav-link" href="{% url 'index1' %}">Home</a></li> 
+								<li class="nav-item"><a class="nav-link" href="{% url 'about1' %}">About</a></li> 
+				
+								<li class="nav-item"><a class="nav-link" href="{% url 'contact1' %}">Contact</a></li>
+
+								{% if 'username1' in request.session %}
+								<li class="nav-item"><a class="nav-link" href="{% url 'logout1' %}">logout</a></li>
+								<li class="nav-item"><a class="nav-link" href="{% url 'profile1' %}">Profile</a></li>
+								<li class="nav-item"><a class="nav-link" href="{% url 'status1' %}">Query status</a></li>
+								{% else %}
+								<li class="nav-item">
+									<a class="nav-link" href="{% url 'sign1' %}">Signup</a>/
+									<a class="nav-link" href="{% url 'log1' %}">login</a>
+								</li>
+
+								{% endif %}
+							</ul>
+						</div> 
+					</div>
+            	</nav>
+            </div>
+        </header>
+        <!--================Header Menu Area =================-->
+        
+        <!--================Home Banner Area =================-->
+        <section class="home_banner_area">
+            <div class="banner_inner d-flex align-items-center">
+            	<div class="overlay bg-parallax" data-stellar-ratio="0.9" data-stellar-vertical-offset="0" data-background=""></div>
+				<div class="container">
+					<div class="banner_content text-center">
+						<h3>We value student views about what we do well<br> and what we can do better</h3>
+						<p>Please send us details about the incident you would like to report. Our Complaint Center will analyze your complaint.</p>
+						{% if 'username1' in request.session %}
+						<button class="main_btn" data-toggle="modal" data-target="#myModal">Register Your Complaints</button>
+						{% else %}
+						<a href="{% url 'log1' %}"><button class="main_btn">Register Your Complaints</button></a>
+						{% endif %}
+					</div>
+				</div>
+            </div>
+        </section>
+        <!------------Model here---------------------------->
+<!-- Trigger the modal with a button -->
+  
+
+ <!-- The Modal -->
+  <div class="modal" id="myModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+      
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Complaint Form</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+		  <!-- Modal body -->
+		  <div class="modal-body">
+          	<p>Please send us details about the incident you would like to report. Our Complaint Center will analyze your complaint and take the appropriate measures in order that the reported situation will not occur at any other time in the future.</p>
+
+			<form method="post" action="{% url 'index1' %}">{% csrf_token %}
+    	 <div class="form-group">
+    			Username<input type="text" class="form-control" name="nm" required>
+    		 </div>
+    		 <div class="form-group">
+    			Email<input type="text" class="form-control" name="em" placeholder="Gmail Address" required>
+    		 </div>
+
+				 <div class="form-group">
+    			Mobile<input type="text" class="form-control" name="mob" placeholder="mobile Number" pattern="[0-9]{10}" required>
+    		 </div>
+    		 <div class="form-group">
+				Address<br>
+					<input type="radio" value="hostel" name="a1" class="r1">Hostel
+					<input type="radio" value="department" name="a1" class="r1">Department
+					<input type="radio" value="residental area" name="a1" class="r1">Residential Area
+			 </div>
+				<div class="form-group subhostel" style="display:none">
+					<input type="radio" value="boys hostel" name="subhos" checked >Boys Hostel
+					<input type="radio" value="girls hostel" name="subhos">Girls Hostel
+    			</div>
+				<div class="form-group subdepart" style="display:none">
+					<input type="text" class="form-control" name="br" placeholder="BRANCH(BCA,MCA,BBA,BTech,MTech,Diploma)">
+    			</div>
+				<div class="form-group subarea" style="display:none">
+					<input type="text" class="form-control" name="add" placeholder="Enter Address Here">
+				</div>
+
+   
+              <div class="form-group">
+    	           Complaint details<input type="text" class="form-control" name="cd" required>
+			  </div>
+				<input type="submit" class="btn btn-danger" value="Submit Query">
+			</form>
+		  </div>
+        <!-- Modal footer -->
+        <div class="modal-footer">
+         <!-- <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>-->
+
+
+        </div>
+        
+      </div>
+    </div>
+  </div>
+  
+        <!-----------------Model end-------------------------->
+        <!--================End Home Banner Area =================-->
+        
+        <!--================Finance Area =================-->
+        <section class="finance_area">
+        	<div class="container">
+        		<div class="finance_inner row">
+        			<div class="col-lg-3 col-sm-6">
+        				<div class="finance_item">
+        					<div class="media">
+        						<div class="d-flex">
+        							<i class="lnr lnr-rocket"></i>
+        						</div>
+        						<div class="media-body">
+        							<h5>Student <br />Charter</h5>
+        						</div>
+        					</div>
+        				</div>
+        			</div>
+        			<div class="col-lg-3 col-sm-6">
+        				<div class="finance_item">
+        					<div class="media">
+        						<div class="d-flex">
+        							<i class="lnr lnr-earth"></i>
+        						</div>
+        						<div class="media-body">
+        							<h5>Student <br />Support</h5>
+        						</div>
+        					</div>
+        				</div>
+        			</div>
+        			<div class="col-lg-3 col-sm-6">
+        				<div class="finance_item">
+        					<div class="media">
+        						<div class="d-flex">
+        							<i class="lnr lnr-smile"></i>
+        						</div>
+        						<div class="media-body">
+        							<h5>Student <br />Appeals</h5>
+        						</div>
+        					</div>
+        				</div>
+        			</div>
+        			<div class="col-lg-3 col-sm-6">
+        				<div class="finance_item">
+        					<div class="media">
+        						<div class="d-flex">
+        							<i class="lnr lnr-tag"></i>
+        						</div>
+        						<div class="media-body">
+        							<h5>Student  <br />Contact</h5>
+        						</div>
+        					</div>
+        				</div>
+        			</div>
+        		</div>
+        	</div>
+        </section>
+        <!--================End Finance Area =================-->
+        
+       
+        <!--================Team Area =================-->
+        <section class="team_area p_120">
+        	<div class="container">
+        		<div class="main_title">
+        			<h2>Meet Our Faculty</h2>
+        			<p>he credit of success goes to the students, faculty and administration of this university who have worked untired for a better Punjab and civilized society.</p>
+        		</div>
+        		<div class="row team_inner">
+        			<div class="col-lg-3 col-sm-6">
+        				<div class="team_item">
+        					<div class="team_img">
+        						<img class="rounded-circle" src="{% static 'student/gndu/sir1.jpg' %}" height="250px" alt="">
+        						<div class="hover">
+        							<a href="#"><i class="fa fa-facebook"></i></a>
+        							<a href="#"><i class="fa fa-twitter"></i></a>
+        							<a href="#"><i class="fa fa-linkedin"></i></a>
+        						</div>
+        					</div>
+        					<div class="team_name">
+        						<h4>Prof.(Dr.)Narpinder singh</h4>
+        						<p>Director of Research</p>
+        					</div>
+        				</div>
+        			</div>
+        			<div class="col-lg-3 col-sm-6">
+        				<div class="team_item">
+        					<div class="team_img">
+        						<img class="rounded-circle" src="{% static 'student/gndu/sir2.jpg' %}" height="250px" alt="">
+        						<div class="hover">
+        							<a href="#"><i class="fa fa-facebook"></i></a>
+        							<a href="#"><i class="fa fa-twitter"></i></a>
+        							<a href="#"><i class="fa fa-linkedin"></i></a>
+        						</div>
+        					</div>
+        					<div class="team_name">
+        						<h4>Prof.(Dr.)Bikramjit singh</h4>
+        						<p>Dean Alumni Association</p>
+        					</div>
+        				</div>
+        			</div>
+        			<div class="col-lg-3 col-sm-6">
+        				<div class="team_item">
+        					<div class="team_img">
+        						<img class="rounded-circle" src="{% static 'student/gndu/sir3.jpg' %}" height="250px" alt="">
+        						<div class="hover">
+        							<a href="#"><i class="fa fa-facebook"></i></a>
+        							<a href="#"><i class="fa fa-twitter"></i></a>
+        							<a href="#"><i class="fa fa-linkedin"></i></a>
+        						</div>
+        					</div>
+        					<div class="team_name">
+        						<h4>Prof.(Dr.)Sarabjot singh</h4>
+        						<p>Dean Academic Affairs</p>
+        					</div>
+        				</div>
+        			</div>
+        			<div class="col-lg-3 col-sm-6">
+        				<div class="team_item">
+        					<div class="team_img">
+        						<img class="rounded-circle" src="{% static 'student/gndu/sir4.jpg' %}" height="250px" alt="">
+        						<div class="hover">
+        							<a href="#"><i class="fa fa-facebook"></i></a>
+        							<a href="#"><i class="fa fa-twitter"></i></a>
+        							<a href="#"><i class="fa fa-linkedin"></i></a>
+        						</div>
+        					</div>
+        					<div class="team_name">
+        						<h4>Prof.(Dr.)T.S. Banipal</h4>
+        						<p>Dean Colleges</p>
+        					</div>
+        				</div>
+        			</div>
+        		</div>
+        	</div>
+        </section>
+        <!--================End Team Area =================-->
+    
+    
+<!-- ##############################################################  -->
+
+
+ <!--================Courses Area =================-->
+       
+        	
+        	<!--Carousel Wrapper-->
+<div id="carousel-with-lb" class="carousel slide carousel-multi-item" data-ride="carousel">
+
+  <!--Controls-->
+  <div class="controls-top">
+   
+  </div>
+  <!--/.Controls-->
+
+  <!--Indicators-->
+  <ol class="carousel-indicators">
+    <li data-target="#carousel-with-lb" data-slide-to="0" class="active secondary-color"></li>
+    <li data-target="#carousel-with-lb" data-slide-to="1" class="secondary-color"></li>
+   
+  </ol>
+  <!--/.Indicators-->
+
+  <!--Slides and lightbox-->
+
+  <div class="carousel-inner mdb-lightbox" role="listbox">
+    <div id="mdb-lightbox-ui"></div>
+    <!--First slide-->
+    <div class=" carousel-item active text-center">
+
+      <figure class="col-md-3 d-md-inline-block">
+        	<img class="img-fluid" src="{% static 'student/gndu/gndu.jpg' %}" height="250px" alt="">
+         
+      </figure>
+
+      <figure class="col-md-3 d-md-inline-block">
+       <img class="img-fluid" src="{% static 'student/gndu/admission.jpg' %}" height="250px" alt="">
+      </figure>
+
+      <figure class="col-md-3 d-md-inline-block">
+       <img class="img-fluid" src="{% static 'student/gndu/b4.jpg' %}" height="250px" alt="">
+      </figure>
+
+      <figure class="col-md-3 d-md-inline-block">
+       <img class="img-fluid" src="{% static 'student/gndu/aa.png' %}" height="250px" alt="">
+      </figure>
+      <figure class="col-md-3 d-md-inline-block">
+       <img class="img-fluid" src="{% static 'student/gndu/bb.png' %}" height="250px" alt="">
+      </figure>
+      <figure class="col-md-3 d-md-inline-block">
+       <img class="img-fluid" src="{% static 'student/gndu/cc.png' %}" height="250px" alt="">
+      </figure>
+
+    </div>
+    <!--/.First slide-->
+
+    <!--Second slide-->
+    <div class="carousel-item text-center">
+
+      <figure class="col-md-3 d-md-inline-block">
+       <img class="img-fluid" src="{% static 'student/gndu/dd.png' %}" height="250px" alt="">
+      </figure>
+
+      <figure class="col-md-3 d-md-inline-block">
+       <img class="img-fluid" src="{% static 'student/gndu/ee.png' %}" height="250px" alt="">
+      </figure>
+
+      <figure class="col-md-3 d-md-inline-block">
+       <img class="img-fluid" src="{% static 'student/gndu/ff.png' %}" height="250px" alt="">
+      </figure>
+
+      <figure class="col-md-3 d-md-inline-block">
+       <img class="img-fluid" src="{% static 'student/gndu/cc.png' %}" height="250px" alt="">
+      </figure>
+      <figure class="col-md-3 d-md-inline-block">
+        <img class="img-fluid" src="{% static 'student/gndu/aa.png' %}" height="250px" alt="">
+      </figure>
+      <figure class="col-md-3 d-md-inline-block">
+        <img class="img-fluid" src="{% static 'student/gndu/bb.png' %}" height="250px" alt="">
+      </figure>
+
+    </div>
+    <!--/.Second slide-->
+
+   
+
+  </div>
+  <!--/.Slides-->
+
+</div>
+<!--/.Carousel Wrapper-->
+        	
+        	
+
+    
+    
+<!-- ##############################################################  -->    
+    
+    
+    
+        <!--================contacts Area =================-->
+        <section>
+        	<div class="container">
+        		
+        			
+        			<img src="{% static 'student/gndu/slip.png' %}" alt="" width="1576px" style="margin-left:-190px">
+        			
+        	
+        	
+        	</div>
+        </section>
+        <!--================End contacts Area =================-->
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+        
+        <!--================Testimonials Area =================-->
+        <section class="testimonials_area p_120">
+        	<div class="container">
+        		<div class="testi_slider owl-carousel">
+        			<div class="item">
+        				<div class="testi_item">
+							<img src="{% static 'student/gndu/st1.jpg' %}" alt="">
+       						<h4>Neha</h4>
+       						<ul class="list">
+       							<li><a href="#"><i class="fa fa-star"></i></a></li>
+       							<li><a href="#"><i class="fa fa-star"></i></a></li>
+       							<li><a href="#"><i class="fa fa-star"></i></a></li>
+       							<li><a href="#"><i class="fa fa-star"></i></a></li>
+       							<li><a href="#"><i class="fa fa-star"></i></a></li>
+       						</ul>
+       						<p>I am pleased to take on the role of Director (Research) of Guru Nanak Dev University which has excellent research programs supported by DST, UGC, SERB, DBT, ICAR, BRNS, CSIR etc. Currently, university has 1067 scholars registered for Ph.D. degrees in different disciplines. </p>
+        				</div>
+        			</div>
+        			<div class="item">
+        				<div class="testi_item">
+							<img src="{% static 'student/gndu/st2.jpg' %}" alt="">
+       						<h4>Ankush</h4>
+       						<ul class="list">
+       							<li><a href="#"><i class="fa fa-star"></i></a></li>
+       							<li><a href="#"><i class="fa fa-star"></i></a></li>
+       							<li><a href="#"><i class="fa fa-star"></i></a></li>
+       							<li><a href="#"><i class="fa fa-star"></i></a></li>
+       							<li><a href="#"><i class="fa fa-star"></i></a></li>
+       						</ul>
+       						<p>The position of Dean, Alumni Association was first created in year 2007. We are committed to develop a strong relationship between the alumni and the University and to develop different platforms for achieving excellence at Guru Nanak Dev University.</p>
+        				</div>
+        			</div>
+        			<div class="item">
+        				<div class="testi_item">
+							<img src="{% static 'student/gndu/st3.jpg' %}" alt="">
+       						<h4>Anusha</h4>
+       						<ul class="list">
+       							<li><a href="#"><i class="fa fa-star"></i></a></li>
+       							<li><a href="#"><i class="fa fa-star"></i></a></li>
+       							<li><a href="#"><i class="fa fa-star"></i></a></li>
+       							<li><a href="#"><i class="fa fa-star"></i></a></li>
+       							<li><a href="#"><i class="fa fa-star"></i></a></li>
+       						</ul>
+       						<p>Established in 1969, Guru Nanak Dev University is counted among the premiere institutions of higher education in India and is widely known for its excellence in teaching, research, sports as well as cultural activities. It is an honour to serve this institution as Dean, Academic affairs.</p>
+        				</div>
+        			</div>
+        		</div>
+        	</div>
+        </section>
+        <!--================End Testimonials Area =================-->
+        
+        <!--================Pagkages Area =================-->
+       <!-- <section class="packages_area p_120">
+        	<div class="container">
+        		<div class="row packages_inner">
+        			<div class="col-lg-4">
+        				<div class="packages_text">
+        					<h3>Choose <br />Course Packages</h3>
+        					<p>There is a moment in the life of any aspiring astronomer that it is time to buy that first telescope. It’s exciting to think about setting up your own viewing station.</p>
+        				</div>
+        			</div>
+        			<div class="col-lg-4">
+        				<div class="packages_item">
+        					<div class="pack_head">
+        						<i class="lnr lnr-graduation-hat"></i>
+        						<h3>Premium</h3>
+        						<p>For the individuals</p>
+        					</div>
+        					<div class="pack_body">
+        						<ul class="list">
+        							<li><a href="#">Secure Online Transfer</a></li>
+        							<li><a href="#">Unlimited Styles for interface</a></li>
+        							<li><a href="#">Reliable Customer Service</a></li>
+        						</ul>
+        					</div>
+        					<div class="pack_footer">
+        						<h4>£399.00</h4>
+        						<a class="main_btn" href="#">Join Now</a>
+        					</div>
+        				</div>
+        			</div>
+        			<div class="col-lg-4">
+        				<div class="packages_item">
+        					<div class="pack_head">
+        						<i class="lnr lnr-diamond"></i>
+        						<h3>Exclusive</h3>
+        						<p>For the individuals</p>
+        					</div>
+        					<div class="pack_body">
+        						<ul class="list">
+        							<li><a href="#">Secure Online Transfer</a></li>
+        							<li><a href="#">Unlimited Styles for interface</a></li>
+        							<li><a href="#">Reliable Customer Service</a></li>
+        						</ul>
+        					</div>
+        					<div class="pack_footer">
+        						<h4>£399.00</h4>
+        						<a class="main_btn" href="#">Join Now</a>
+        					</div>
+        				</div>
+        			</div>
+        		</div>
+        	</div>
+        </section>-->
+        <!--================End Pagkages Area =================-->
+        
+        <!--================Latest Blog Area =================-->
+        <section class="latest_blog_area p_120">
+        	<div class="container">
+        		<div class="main_title">
+        			<h2>Latest Posts From Blog</h2>
+        			<p>The motto of the University as engraved on its emblem Guru's wisdom illumines all speaks of the vision and idealism for which the University stands. Spread over a stretch of 500 acres towards the west of the City.</p>
+        		</div>
+        		<div class="row latest_blog_inner">
+        			<div class="col-lg-3 col-md-6">
+        				<div class="l_blog_item">
+        					<img class="img-fluid" src="{% static 'student/gndu/b1.jpg' %}" height="200px" alt="">
+        					<a class="date" href="#">25 October, 2018</a>
+        					<a href="single-blog.html"><h4>Education</h4></a>
+        					<p>Studies and research on the life and teachings of Guru Nanak, in addition to working towards the promotion of Punjabi language. </p>
+        				</div>
+        			</div>
+        			<div class="col-lg-3 col-md-6">
+        				<div class="l_blog_item">
+        					<img class="img-fluid" src="{% static 'student/gndu/b2.jpg' %}" height="200px" alt="">
+        					<a class="date" href="#">25 October, 2018</a>
+        					<a href="single-blog.html"><h4>Youth Welfare</h4></a>
+        					<p>Department of Youth Welfare was established in 1971, with the objective of promoting cultural activities among the students.</p>
+        				</div>
+        			</div>
+        			<div class="col-lg-3 col-md-6">
+        				<div class="l_blog_item">
+        					<img class="img-fluid" src="{% static 'student/gndu/b3.jpg' %}" height="200px" alt="">
+        					<a class="date" href="#">25 October, 2018</a>
+        					<a href="single-blog.html"><h4>North Zone Inter-University</h4></a>
+        					<p>It was in acknowledgment of our strengths that we have had the honour to host the 28th North Zone Inter-University Zonal Youth Festival.</p>
+        				</div>
+        			</div>
+        			<div class="col-lg-3 col-md-6">
+        				<div class="l_blog_item">
+        					<img class="img-fluid" src="{% static 'student/gndu/b4.jpg' %}" height="200px" alt="">
+        					<a class="date" href="#">25 October, 2018</a>
+        					<a href="single-blog.html"><h4>Annual Functions</h4></a>
+        					<p>Department of Physical Education (Allied Teaching) organizes games and sports in the affiliated colleges to raise the University teams in various disciplines. The department has gained national recognition.</p>
+        				</div>
+        			</div>
+        		</div>
+        	</div>
+        </section>
+        <!--================End Latest Blog Area =================-->
+        
+        <!--================Impress Area =================-->
+        <section class="impress_area p_120" style="background-image:url('{% static 'student/gndu/slider-9.jpg' %}');">
+        	<div class="container">
+        		<div class="impress_inner text-center">
+					<h2>Resolving Your Complaint</h2>
+					<p>Complaints concerning actions that occurred more than two years prior to filing a student complaint form with the THECB, unless the cause of the delay in filing the student complaint form with the Agency was the complainant's exhaustion of the institution's grievance procedures</p>
+
+        		</div>
+        	</div>
+        </section>
+        <!--================End Impress Area =================-->
+        
+        <!--================ start footer Area  =================-->	
+        <footer class="footer-area p_120">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-2  col-md-6 col-sm-6">
+                        <div class="single-footer-widget tp_widgets">
+                           <h6 class="footer_title">Quick Links</h6>
+                            <ul class="list">
+                            	<li><a href="http://online.gndu.ac.in/download-center.aspx">Download Center</a></li>
+                            	<li><a href="http://www.gndu.ac.in/TEQIP%20website/Home.html">TEQIP</a></li>
+                            	<li><a href="https://alumni.gndu.ac.in/">Alumni</a></li>
+                            	<li><a href="http://online.gndu.ac.in/placements.aspx">Placements</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-2  col-md-6 col-sm-6">
+                        <div class="single-footer-widget tp_widgets">
+                           <h6 class="footer_title">Regional Campuses</h6>
+                            <ul class="list">
+                            	<li><a href="http://www.gndurcjal.in/">Jalandhar Campus</a></li>
+                            	<li><a href="https://www.gndurcgsp.in/">Gurdaspur Campus</a></li>
+                            	<li><a href="#">Fattu Dhinga Campus</a></li>
+                            	<li><a href="http://gndurcsathiala.org/">Sathiala Campus</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-2  col-md-6 col-sm-6">
+                        <div class="single-footer-widget tp_widgets">
+                           <h6 class="footer_title">Features</h6>
+                            <ul class="list">
+                            	<li><a href="#">GIAN</a></li>
+                            	<li><a href="#">IQAC</a></li>
+                            	<li><a href="#">-</a></li>
+                            	
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-2  col-md-6 col-sm-6">
+                        <div class="single-footer-widget tp_widgets">
+                           <h6 class="footer_title">University Colleges</h6>
+                            <ul class="list">
+                            	<li><a href="http://www.assmcollege.org/">A.S.S.M College</a></li>
+                            	<li><a href="http://www.gnducjal.org/">GNDU Jalandhar College</a></li>
+                            	<li><a href="http://online.gndu.ac.in/srspm-college-niari.aspx">S.R.S.P.M College, Niari</a></li>
+                            	<li><a href="#">Agencies</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-sm-6">
+                        <aside class="f_widget news_widget">
+        					<div class="f_title">
+        						<h3 class="footer_title">Newsletter</h3>
+        					</div>
+        					<p>Stay updated with our latest trends</p>
+        					<div id="mc_embed_signup">
+                                <form target="_blank" action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01" method="get" class="subscribe_form relative">
+                                	<div class="input-group d-flex flex-row">
+                                        <input name="EMAIL" placeholder="Enter email address" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Email Address '" required="" type="email">
+                                        <button class="btn sub-btn"><span class="lnr lnr-arrow-right"></span></button>		
+                                    </div>				
+                                    <div class="mt-10 info"></div>
+                                </form>
+                            </div>
+        				</aside>
+                    </div>
+                </div>
+                <div class="row footer-bottom d-flex justify-content-between align-items-center">
+                    
+                    <div class="col-lg-4 col-md-4 footer-social">
+                        <a href="#"><i class="fa fa-facebook"></i></a>
+                        <a href="#"><i class="fa fa-twitter"></i></a>
+                        <a href="#"><i class="fa fa-dribbble"></i></a>
+                        <a href="#"><i class="fa fa-behance"></i></a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+		<!--================ End footer Area  =================-->
+        
+        
+        
+        
+        
+        
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="{% static 'student/js/jquery-3.3.1.min.js' %}"></script>
+        <script src="{% static 'student/js/popper.js' %}"></script>
+        <script src="{% static 'student/js/bootstrap.min.js' %}"></script>
+        <script src="{% static 'student/js/stellar.js' %}"></script>
+        <script src="{% static 'student/vendors/lightbox/simpleLightbox.min.js' %}"></script>
+        <script src="{% static 'student/vendors/nice-select/js/jquery.nice-select.min.js' %}"></script>
+        <script src="{% static 'student/vendors/isotope/imagesloaded.pkgd.min.js' %}"></script>
+        <script src="{% static 'student/vendors/isotope/isotope.pkgd.min.js' %}"></script>
+        <script src="{% static 'student/vendors/owl-carousel/owl.carousel.min.js' %}"></script>
+        <script src="{% static 'student/vendors/popup/jquery.magnific-popup.min.js' %}"></script>
+        <script src="{% static 'student/js/jquery.ajaxchimp.min.js' %}"></script>
+        <script src="{% static 'student/vendors/counter-up/jquery.waypoints.min.js' %}"></script>
+        <script src="{% static 'student/vendors/counter-up/jquery.counterup.js' %}"></script>
+        <script src="{% static 'student/js/mail-script.js' %}"></script>
+        <script src="{% static 'student/js/theme.js' %}"></script>
+    </body>
+</html>
